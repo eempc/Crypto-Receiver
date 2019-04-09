@@ -4,67 +4,64 @@
              xmlns:local="clr-namespace:Wallet"
              x:Class="Wallet.MainPage">
 
-    <Grid BackgroundColor="Gray" RowSpacing="0">
-		<Grid.RowDefinitions>
-			<RowDefinition Height="3*"/>
-			<RowDefinition Height="1*"/>
+    <Grid BackgroundColor="Gray" RowSpacing="0" ColumnSpacing="0">
+
+        <Grid.RowDefinitions>
+			<RowDefinition Height="4*"/>
+			<RowDefinition Height="2*"/>
 			<RowDefinition Height="10*"/>
 			<RowDefinition Height="2*"/>
-			<RowDefinition Height="3*"/>
-			<RowDefinition Height="1*"/>
-			<RowDefinition Height="3*"/>
-			<RowDefinition Height="1*"/>
             <RowDefinition Height="3*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="3*"/>
             <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
         
         <!-- Row 0 Header -->
-        <BoxView BackgroundColor="Yellow"></BoxView>
-        <Grid Grid.Row="0">
+
+        <Grid Grid.Row="0" RowSpacing="0" ColumnSpacing="0" BackgroundColor="Black">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="1*"/>
 				<ColumnDefinition Width="4*"/>
 				<ColumnDefinition Width="1*"/>
 			</Grid.ColumnDefinitions>
             
-            <Image x:Name="symbol" Source="waterdrop.png" Grid.Column="0"/>
-            <Label x:Name="header" Grid.Column="1" Text="Ethereum" Style="{StaticResource LabelHeader}"/>
-            <Image x:Name="burger" Grid.Column="2" Source="waterdrop.png"/>
+            <Image x:Name="Symbol" Source="waterdrop.png" Grid.Column="0"/>
+            <Label x:Name="Header" Grid.Column="1" Text="Ethereum" Style="{StaticResource LabelHeader}"/>
+            <Image x:Name="Burger" Grid.Column="2" Source="waterdrop.png"/>
         </Grid>
         
         <!-- Row 1 Address name -->
-        <BoxView BackgroundColor="Red" Grid.Row="1"></BoxView>
-        <Label Grid.Row="1" Text="Omise GO Smart Contract" Style="{StaticResource LabelName}"></Label>
+
+        <Label x:Name="GivenName" Grid.Row="1" Text="Omise GO Smart Contract" Style="{StaticResource LabelName}"></Label>
         
         <!-- Row 2 QR code -->
-        <BoxView BackgroundColor="LightBlue" Grid.Row="2"></BoxView>
-        <Image Source="omgqr.png" Grid.Row="2"/>
+        <Frame Grid.Row="2" Padding="3" BackgroundColor="White" HorizontalOptions="Center">
+            <Image x:Name="QRImage" HorizontalOptions="Center" Scale="1" Source="omgqr.png" Grid.Row="2" Aspect="AspectFit"/>
+        </Frame>
+        
 
         <!-- Row 3 Address -->
-        <BoxView BackgroundColor="White" Grid.Row="3"></BoxView>
-        <Label Grid.Row="3" Style="{StaticResource LabelName}">0xd26114cd6EE289AccF82350c8d8487fedB8A0C07</Label>
+ 
+        <Label x:Name="Address" Grid.Row="3" Style="{StaticResource LabelAddress}">0xd26114cd6EE289AccF82350c8d8487fedB8A0C07</Label>
         
         <!-- Row 4 Enter Amount -->
-        <BoxView BackgroundColor="Fuchsia" Grid.Row="4"></BoxView>
-        <Grid Grid.Row="4">
+
+        <Grid Grid.Row="4" ColumnSpacing="0" RowSpacing="0">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition/>
 				<ColumnDefinition/>
 				<ColumnDefinition/>
 			</Grid.ColumnDefinitions>
 
-            <Label Text="Enter amount:" Grid.Column="0"></Label>
-            <Label x:Name="FiatCurrency" Text="$ USD" Grid.Column="1"></Label>
-            <Entry x:Name="FiatAmount" Keyboard="Numeric" Grid.Column="2" Text="100.00"></Entry>
+            <Label Text="Enter amount:" Grid.Column="0" Style="{StaticResource LabelEnterAmount}"></Label>
+            <Label x:Name="FiatCurrency" Text="$ USD" Grid.Column="1" Style="{StaticResource LabelFiatSymbol}"></Label>
+            <Entry x:Name="FiatAmount" Keyboard="Numeric" Grid.Column="2" Text="100.00" Style="{StaticResource EntryFiatAmount}" HorizontalOptions="Start"></Entry>
         </Grid>
         
-        <!-- Row 5 White space -->
-        <BoxView BackgroundColor="Black" Grid.Row="5"></BoxView>
-        
-        <!-- Row 6 Ether amount -->
-        <BoxView BackgroundColor="ForestGreen" Grid.Row="6"></BoxView>
-        <Grid Grid.Row="6">
+        <!-- Row 5 Ether amount -->
+
+        <Grid Grid.Row="5" RowSpacing="0" ColumnSpacing="12">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition/>
 				<ColumnDefinition/>
@@ -75,22 +72,60 @@
             </Grid.RowDefinitions>
 
 
-            <Label Text="Please pay" HorizontalTextAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2"/>
-            <Label Text="0.3333" HorizontalTextAlignment="End" Grid.Row="1" Grid.Column="0"/>
-            <Label Text="ETHER" Grid.Row="1" Grid.Column="1"/>
+            <Label Text="Please pay" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource LabelPleasePay}"/>
+            <Label x:Name="CryptoAmount" Text="0.3333" Grid.Row="1" Grid.Column="0" Style="{StaticResource LabelPayAmount}"/>
+            <Label x:Name="CryptoUnits" Text="ETHER" Grid.Row="1" Grid.Column="1" Style="{StaticResource LabelCryptoUnits}"/>
         </Grid>
         
-        <!-- Row 7 Space -->
-        <BoxView BackgroundColor="Black" Grid.Row="7"></BoxView>
+
+
         
-        <!-- Row 8 Link boxes -->
-        <BoxView BackgroundColor="Azure" Grid.Row="8"></BoxView>
+        <!-- Row 6 Link boxes -->
+
+        <Grid Grid.Row="6">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+			</Grid.ColumnDefinitions>
+
+            <Frame Grid.Column="0" Style="{StaticResource LinkBox}">
+                <FlexLayout Direction="Column" JustifyContent="Center" AlignItems="Center">
+                    <Label Text="View address on" TextColor="Azure" HorizontalTextAlignment="Center" FontSize="10"></Label>
+                    <Image x:Name="ExternalLink" Source="etherscan" Scale="0.6" VerticalOptions="Center"></Image>
+                </FlexLayout>
+            </Frame>
+
+            <Frame Grid.Column="1" Style="{StaticResource LinkBox}">
+                <FlexLayout Direction="Column" JustifyContent="Center" AlignItems="Center">
+                    <Label TextColor="Azure" Text="Exchange rate" HorizontalTextAlignment="Center" FontSize="14"></Label>
+                    <Label TextColor="Azure" x:Name="ExchangeRate" Text="$450" HorizontalTextAlignment="Center" FontSize="14"></Label>
+                    <Label TextColor="Azure"  x:Name="ExchangeRateSource" Text="ethereumprice.org" HorizontalTextAlignment="Center" FontSize="10"></Label>
+                </FlexLayout>
+            </Frame>
+
+            
+        </Grid>
         
-        <!-- Row 9 space -->
-        <BoxView BackgroundColor="Black" Grid.Row="9"></BoxView>
+        <!-- Row 7 wallet select -->
         
-        <!-- Row 10 wallet select -->
-        <BoxView BackgroundColor="Accent" Grid.Row="10"></BoxView>
+            <Grid Grid.Row="7"  RowSpacing="0" BackgroundColor="Black">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="6*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label x:Name="SelectWallet" TextColor="Azure" Text="Select Wallet" Grid.Column="0" HorizontalTextAlignment="end" VerticalTextAlignment="Center"/>
+
+                <FlexLayout x:Name="FlexLayout" Grid.Column="1" Wrap="Wrap">
+                    <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}"/>
+                    <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}"/>
+                    <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}"/>
+                    <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}"/>
+
+                </FlexLayout>
+
+
+            </Grid>
         
     </Grid>
 

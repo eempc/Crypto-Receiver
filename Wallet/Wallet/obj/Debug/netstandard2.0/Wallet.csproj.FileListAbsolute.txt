@@ -1,0 +1,12 @@
+D:\Projects\Wallet\Wallet\Wallet\bin\Debug\netstandard2.0\Wallet.deps.json
+D:\Projects\Wallet\Wallet\Wallet\bin\Debug\netstandard2.0\Wallet.dll
+D:\Projects\Wallet\Wallet\Wallet\bin\Debug\netstandard2.0\Wallet.pdb
+D:\Projects\Wallet\Wallet\Wallet\obj\Debug\netstandard2.0\Wallet.csprojAssemblyReference.cache
+D:\Projects\Wallet\Wallet\Wallet\obj\Debug\netstandard2.0\App.xaml.g.cs
+D:\Projects\Wallet\Wallet\Wallet\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+D:\Projects\Wallet\Wallet\Wallet\obj\Debug\netstandard2.0\Wallet.csproj.CoreCompileInputs.cache
+D:\Projects\Wallet\Wallet\Wallet\obj\Debug\netstandard2.0\Wallet.AssemblyInfoInputs.cache
+D:\Projects\Wallet\Wallet\Wallet\obj\Debug\netstandard2.0\Wallet.AssemblyInfo.cs
+D:\Projects\Wallet\Wallet\Wallet\obj\Debug\netstandard2.0\XamlC.stamp
+D:\Projects\Wallet\Wallet\Wallet\obj\Debug\netstandard2.0\Wallet.dll
+D:\Projects\Wallet\Wallet\Wallet\obj\Debug\netstandard2.0\Wallet.pdb

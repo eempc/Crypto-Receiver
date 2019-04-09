@@ -1,3 +1,6 @@
+Wallet.Droid.MainActivity, Wallet.Android;md5038e744846d0d3e86c03b675042f6b43.MainActivity
+Wallet.Droid.MainActivity;md5038e744846d0d3e86c03b675042f6b43.MainActivity
+wallet.droid.MainActivity;md5038e744846d0d3e86c03b675042f6b43.MainActivity
 Android.Support.V4.View.ActionProvider+ISubUiVisibilityListenerImplementor, Xamarin.Android.Support.Compat;mono.android.support.v4.view.ActionProvider_SubUiVisibilityListenerImplementor
 Android.Support.V4.View.ActionProvider.ISubUiVisibilityListenerImplementor;mono.android.support.v4.view.ActionProvider_SubUiVisibilityListenerImplementor
 mono.android.support.v4.view.ActionProvider_SubUiVisibilityListenerImplementor;mono.android.support.v4.view.ActionProvider_SubUiVisibilityListenerImplementor

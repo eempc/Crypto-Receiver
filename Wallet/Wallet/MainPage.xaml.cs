@@ -13,6 +13,9 @@ namespace Wallet {
     public partial class MainPage : ContentPage {
         public MainPage() {
             InitializeComponent();
+            CryptocurrenciesValidation.InitiateCryptos();
+            Cryptocurrency myCrypto = CryptocurrenciesValidation.cryptocurrencies["Ethereum"];
+            GivenName.Text = myCrypto.symbol + myCrypto.fullName;
         }
     }
 }
