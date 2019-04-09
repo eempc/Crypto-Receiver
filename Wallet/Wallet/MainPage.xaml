@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Wallet"
+             x:Class="Wallet.MainPage">
+
+    <Grid BackgroundColor="Gray" RowSpacing="0">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="3*"/>
+			<RowDefinition Height="1*"/>
+			<RowDefinition Height="10*"/>
+			<RowDefinition Height="2*"/>
+			<RowDefinition Height="3*"/>
+			<RowDefinition Height="1*"/>
+			<RowDefinition Height="3*"/>
+			<RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Row 0 Header -->
+        <BoxView BackgroundColor="Yellow"></BoxView>
+        
+        <!-- Row 1 Address name -->
+        <BoxView BackgroundColor="Red" Grid.Row="1"></BoxView>
+        
+        <!-- Row 2 QR code -->
+        <BoxView BackgroundColor="LightBlue" Grid.Row="2"></BoxView>
+        
+        <!-- Row 3 Address -->
+        <BoxView BackgroundColor="White" Grid.Row="3"></BoxView>
+        
+        <!-- Row 4 Enter Amount -->
+        <BoxView BackgroundColor="Fuchsia" Grid.Row="4"></BoxView>
+        
+        <!-- Row 5 White space -->
+        <BoxView BackgroundColor="Black" Grid.Row="5"></BoxView>
+        
+        <!-- Row 6 Ether amount -->
+        <BoxView BackgroundColor="ForestGreen" Grid.Row="6"></BoxView>
+        
+        <!-- Row 7 Space -->
+        <BoxView BackgroundColor="Black" Grid.Row="7"></BoxView>
+        
+        <!-- Row 8 Link boxes -->
+        <BoxView BackgroundColor="Azure" Grid.Row="8"></BoxView>
+        
+        <!-- Row 9 space -->
+        <BoxView BackgroundColor="Black" Grid.Row="9"></BoxView>
+        
+        <!-- Row 10 wallet select -->
+        <BoxView BackgroundColor="Accent" Grid.Row="10"></BoxView>
+        
+    </Grid>
+
+</ContentPage>
