@@ -21,24 +21,64 @@
         
         <!-- Row 0 Header -->
         <BoxView BackgroundColor="Yellow"></BoxView>
+        <Grid Grid.Row="0">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="1*"/>
+				<ColumnDefinition Width="4*"/>
+				<ColumnDefinition Width="1*"/>
+			</Grid.ColumnDefinitions>
+            
+            <Image x:Name="symbol" Source="waterdrop.png" Grid.Column="0"/>
+            <Label x:Name="header" Grid.Column="1" Text="Ethereum" Style="{StaticResource LabelHeader}"/>
+            <Image x:Name="burger" Grid.Column="2" Source="waterdrop.png"/>
+        </Grid>
         
         <!-- Row 1 Address name -->
         <BoxView BackgroundColor="Red" Grid.Row="1"></BoxView>
+        <Label Grid.Row="1" Text="Omise GO Smart Contract" Style="{StaticResource LabelName}"></Label>
         
         <!-- Row 2 QR code -->
         <BoxView BackgroundColor="LightBlue" Grid.Row="2"></BoxView>
-        
+        <Image Source="omgqr.png" Grid.Row="2"/>
+
         <!-- Row 3 Address -->
         <BoxView BackgroundColor="White" Grid.Row="3"></BoxView>
+        <Label Grid.Row="3" Style="{StaticResource LabelName}">0xd26114cd6EE289AccF82350c8d8487fedB8A0C07</Label>
         
         <!-- Row 4 Enter Amount -->
         <BoxView BackgroundColor="Fuchsia" Grid.Row="4"></BoxView>
+        <Grid Grid.Row="4">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+			</Grid.ColumnDefinitions>
+
+            <Label Text="Enter amount:" Grid.Column="0"></Label>
+            <Label x:Name="FiatCurrency" Text="$ USD" Grid.Column="1"></Label>
+            <Entry x:Name="FiatAmount" Keyboard="Numeric" Grid.Column="2" Text="100.00"></Entry>
+        </Grid>
         
         <!-- Row 5 White space -->
         <BoxView BackgroundColor="Black" Grid.Row="5"></BoxView>
         
         <!-- Row 6 Ether amount -->
         <BoxView BackgroundColor="ForestGreen" Grid.Row="6"></BoxView>
+        <Grid Grid.Row="6">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+			</Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+				<RowDefinition/>
+				<RowDefinition/>
+            </Grid.RowDefinitions>
+
+
+            <Label Text="Please pay" HorizontalTextAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2"/>
+            <Label Text="0.3333" HorizontalTextAlignment="End" Grid.Row="1" Grid.Column="0"/>
+            <Label Text="ETHER" Grid.Row="1" Grid.Column="1"/>
+        </Grid>
         
         <!-- Row 7 Space -->
         <BoxView BackgroundColor="Black" Grid.Row="7"></BoxView>
