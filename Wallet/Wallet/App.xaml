@@ -53,23 +53,29 @@
             <Setter Property="HorizontalTextAlignment" Value="Center"/>
             <Setter Property="VerticalTextAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="{StaticResource FontSizeLarge}"/>
+            <Setter Property="TextColor" Value="Azure"/>
         </Style>
 
         <Style x:Key="LabelPayAmount" TargetType="Label">
             <Setter Property="HorizontalTextAlignment" Value="End"/>
             <Setter Property="VerticalTextAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="{StaticResource FontSizeLarge}"/>
+            <Setter Property="TextColor" Value="Azure"/>
         </Style>
 
         <Style x:Key="LabelCryptoUnits" TargetType="Label">
             <Setter Property="VerticalTextAlignment" Value="Center"/>
             <Setter Property="HorizontalTextAlignment" Value="Start"/>
             <Setter Property="FontSize" Value="{StaticResource FontSizeLarge}"/>
+            <Setter Property="TextColor" Value="Azure"/>
         </Style>
 
         <Style x:Key="WalletIcon" TargetType="Image">
-            <Setter Property="Scale" Value="0.75"/>
+            <Setter Property="Scale" Value="0.8"/>
             <Setter Property="BackgroundColor" Value="Beige"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            
+
         </Style>
 
         <Style x:Key="LinkBox" TargetType="Frame">

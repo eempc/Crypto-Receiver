@@ -9,10 +9,6 @@ namespace Wallet {
 
         public static Dictionary<string, Cryptocurrency> cryptocurrencies = new Dictionary<string, Cryptocurrency>();
         
-        public CryptocurrenciesValidation() {
-            
-        }
-
         public static void InitiateCryptos() {
             cryptocurrencies.Add("Ethereum", new Cryptocurrency(
                 "ETH", 

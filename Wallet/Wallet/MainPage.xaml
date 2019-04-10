@@ -37,7 +37,7 @@
         
         <!-- Row 2 QR code -->
         <Frame Grid.Row="2" Padding="3" BackgroundColor="White" HorizontalOptions="Center">
-            <Image x:Name="QRImage" HorizontalOptions="Center" Scale="1" Source="omgqr.png" Grid.Row="2" Aspect="AspectFit"/>
+            <Image x:Name="QRImage" HorizontalOptions="Center" Scale="1" Source="omgqr.png" Grid.Row="2"/>
         </Frame>
         
 
@@ -61,7 +61,7 @@
         
         <!-- Row 5 Ether amount -->
 
-        <Grid Grid.Row="5" RowSpacing="0" ColumnSpacing="12">
+        <Grid Grid.Row="5" RowSpacing="0" ColumnSpacing="12" BackgroundColor="Black">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition/>
 				<ColumnDefinition/>
@@ -116,8 +116,8 @@
 
                 <Label x:Name="SelectWallet" TextColor="Azure" Text="Select Wallet" Grid.Column="0" HorizontalTextAlignment="end" VerticalTextAlignment="Center"/>
 
-                <FlexLayout x:Name="FlexLayout" Grid.Column="1" Wrap="Wrap">
-                    <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}"/>
+                <FlexLayout x:Name="FlexLayout" Grid.Column="1" Wrap="Wrap" CompressedLayout.IsHeadless="False" Position="Relative">
+                    <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}" HorizontalOptions="Fill" Aspect="AspectFit"/>
                     <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}"/>
                     <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}"/>
                     <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}"/>
