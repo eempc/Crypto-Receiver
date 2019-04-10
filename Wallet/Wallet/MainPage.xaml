@@ -56,7 +56,7 @@
 
             <Label Text="Enter amount:" Grid.Column="0" Style="{StaticResource LabelEnterAmount}"></Label>
             <Label x:Name="FiatCurrency" Text="$ USD" Grid.Column="1" Style="{StaticResource LabelFiatSymbol}"></Label>
-            <Entry x:Name="FiatAmount" Keyboard="Numeric" Grid.Column="2" Text="100.00" Style="{StaticResource EntryFiatAmount}" HorizontalOptions="Start"></Entry>
+            <Entry x:Name="FiatAmount" TextChanged="FiatAmount_TextChanged" Keyboard="Numeric" Grid.Column="2" Text="100.00" Style="{StaticResource EntryFiatAmount}" HorizontalOptions="Start"></Entry>
         </Grid>
         
         <!-- Row 5 Ether amount -->
@@ -116,7 +116,7 @@
 
                 <Label x:Name="SelectWallet" TextColor="Azure" Text="Select Wallet" Grid.Column="0" HorizontalTextAlignment="end" VerticalTextAlignment="Center"/>
 
-                <FlexLayout x:Name="FlexLayout" Grid.Column="1" Wrap="Wrap" CompressedLayout.IsHeadless="False" Position="Relative">
+                <FlexLayout x:Name="WalletArea" Grid.Column="1" Wrap="Wrap" CompressedLayout.IsHeadless="False" Position="Relative" HorizontalOptions="Center">
                     <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}" HorizontalOptions="Fill" Aspect="AspectFit"/>
                     <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}"/>
                     <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}"/>

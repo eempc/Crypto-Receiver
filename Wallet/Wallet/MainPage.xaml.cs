@@ -11,12 +11,27 @@ namespace Wallet {
     // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(true)]
     public partial class MainPage : ContentPage {
+        Cryptocurrency myCrypto = new Cryptocurrency();
+
         public MainPage() {
             InitializeComponent();
             CryptocurrenciesValidation.InitiateCryptos();
-            Cryptocurrency myCrypto = CryptocurrenciesValidation.cryptocurrencies["Ethereum"];
-            GivenName.Text = myCrypto.symbol + myCrypto.fullName;
-            QRImage.Source = myCrypto.imageFile;
+            myCrypto = CryptocurrenciesValidation.cryptocurrencies["Ethereum"];
+            //GivenName.Text = myCrypto.symbol + myCrypto.fullName;
+            //QRImage.Source = myCrypto.imageFile;
+            //Image myImage = new Image { Source = "emailicon.png", Style = (Style)Application.Current.Resources["WalletIcon"] };
+            //WalletArea.Children.Add(myImage);
+        }
+        
+        private void FiatAmount_TextChanged(object sender, TextChangedEventArgs e) {
+            if (double.TryParse(FiatAmount.Text, out double d) && !Double.IsNaN(d) && d > 0 && !Double.IsInfinity(d)) {
+                UpdateCryptoAmount(d);
+            }          
+        }
+
+        public void UpdateCryptoAmount(double fiatAmount) {
+
+            CryptoAmount.Text = (fiatAmount * myCrypto.GetRate()).ToString();
         }
     }
 }

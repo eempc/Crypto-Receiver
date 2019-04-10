@@ -22,8 +22,8 @@ namespace Wallet {
 
         }
 
-        public double RateFeed(string url) {
-            return 0;
+        public double GetRate() {
+            return 5.0;
         }
     }
 }
