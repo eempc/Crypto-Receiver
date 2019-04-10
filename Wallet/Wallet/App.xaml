@@ -69,6 +69,7 @@
 
         <Style x:Key="WalletIcon" TargetType="Image">
             <Setter Property="Scale" Value="0.75"/>
+            <Setter Property="BackgroundColor" Value="Beige"/>
         </Style>
 
         <Style x:Key="LinkBox" TargetType="Frame">

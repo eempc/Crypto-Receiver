@@ -7,8 +7,8 @@ using System.Text;
 namespace Wallet {
     class Cryptocurrency : Currency {
 
-        public Cryptocurrency(string symbol, string fullName, long smallestUnitDivider, string[] unitNames) :
-            base (symbol, fullName, smallestUnitDivider, unitNames) {
+        public Cryptocurrency(string symbol, string fullName, Dictionary<string, int> unitNames, string imageFile) :
+            base (symbol, fullName, unitNames, imageFile) {
 
         }
 

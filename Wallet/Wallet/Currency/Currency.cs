@@ -8,14 +8,14 @@ namespace Wallet {
     public class Currency {
         public string symbol { get; set; }
         public string fullName { get; set; }
-        public long smallestUnitDivider { get; set; }
-        public string[] unitNames { get; set; }
+        public Dictionary<string, int> unitNames { get; set; }
+        public string imageFile { get; set; }
 
-        public Currency(string symbol, string fullName, long smallestUnitDivider, string[] unitNames) {
+        public Currency(string symbol, string fullName, Dictionary<string, int> unitNames, string imageFile) {
             this.symbol = symbol;
             this.fullName = fullName;
-            this.smallestUnitDivider = smallestUnitDivider;
             this.unitNames = unitNames;
+            this.imageFile = imageFile;
         }
 
         public Currency() {

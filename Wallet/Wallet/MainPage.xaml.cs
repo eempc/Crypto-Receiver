@@ -16,6 +16,7 @@ namespace Wallet {
             CryptocurrenciesValidation.InitiateCryptos();
             Cryptocurrency myCrypto = CryptocurrenciesValidation.cryptocurrencies["Ethereum"];
             GivenName.Text = myCrypto.symbol + myCrypto.fullName;
+            QRImage.Source = myCrypto.imageFile;
         }
     }
 }
