@@ -8,6 +8,8 @@ namespace Wallet {
             InitializeComponent();
 
             //MainPage = new MainPage();
+            
+            //For 2 or more pages, MainPage needs to be renamed NavigationPage rather than the above 
             MainPage = new NavigationPage(new MainPage());
             
         }

@@ -4,14 +4,19 @@ using System.Text;
 
 namespace Wallet {
     class UserAddress {
+        public string name { get; set; }
         public string address { get; set; }
         public string crypto { get; set; } // Select a crypto from the validation class
-        public string name { get; set; }
-
-        public UserAddress(string address, string crypto, string name) {
+        
+        public UserAddress(string name, string address, string crypto) {
+            this.name = name;
             this.address = address;
             this.crypto = crypto;
-            this.name = name;
+            
+        }
+
+        public UserAddress() {
+
         }
     }
 }

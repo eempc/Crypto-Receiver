@@ -11,3 +11,4 @@ D:\Projects\Wallet\Wallet\Wallet\obj\Debug\netstandard2.0\XamlC.stamp
 D:\Projects\Wallet\Wallet\Wallet\obj\Debug\netstandard2.0\Wallet.dll
 D:\Projects\Wallet\Wallet\Wallet\obj\Debug\netstandard2.0\Wallet.pdb
 D:\Projects\Wallet\Wallet\Wallet\obj\Debug\netstandard2.0\AddPage.xaml.g.cs
+D:\Projects\Wallet\Wallet\Wallet\obj\Debug\netstandard2.0\ViewAddresses.xaml.g.cs

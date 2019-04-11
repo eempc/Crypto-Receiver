@@ -45,7 +45,7 @@ namespace Wallet {
             CryptoAmount.Text = (fiatAmount * myCrypto.GetRate()).ToString();
         }
 
-        public async void GoToAddPage() => await Navigation.PushAsync(new AddPage());
+        public async void GoToAddPage() => await Navigation.PushAsync(new ViewAddresses { Title = "Address CRUD Page" });
         
     }
 }

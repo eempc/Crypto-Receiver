@@ -4,9 +4,8 @@
              x:Class="Wallet.AddPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="Address" Style="{StaticResource LabelAddress}"/>
+            <Entry BackgroundColor="Gray"></Entry>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
