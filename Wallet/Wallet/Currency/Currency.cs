@@ -23,6 +23,7 @@ namespace Wallet {
         }
 
         public double GetRate() {
+            // https://stackoverflow.com/questions/13019433/calling-a-method-every-x-minutes/23323647
             return 5.0;
         }
     }
