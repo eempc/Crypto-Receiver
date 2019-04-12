@@ -3,13 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Wallet.ViewAddresses">
     <ContentPage.Content>
-        <ListView x:Name="AddressesListView" BackgroundColor="Gray">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ImageCell Text="{Binding name}" Detail="{Binding address}" ImageSource="waterdrop.png"/>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-            
-        </ListView>
+        <StackLayout>
+            <Button Text="Add"></Button>
+            <ListView x:Name="AddressesListView" BackgroundColor="Gray">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell Text="{Binding name}" Detail="{Binding address}" ImageSource="waterdrop.png"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </StackLayout>
+
+
     </ContentPage.Content>
 </ContentPage>

@@ -15,9 +15,9 @@ namespace Wallet {
 
             List<UserAddress> userAddresses = new List<UserAddress>();
             userAddresses.Add(new UserAddress("My 1st ETH address", "0x772682364", "Ethereum"));
-            userAddresses.Add(new UserAddress("My 2nd ETH address", "0x7223434442364", "Ethereum"));
+            for (int i = 0; i < 10; i++) userAddresses.Add(new UserAddress("MyETH address " + i, "0x7223434442364", "Ethereum"));
             AddressesListView.ItemsSource = userAddresses;
-
+            
         }
     }
 }

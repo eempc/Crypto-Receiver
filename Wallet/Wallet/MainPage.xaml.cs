@@ -24,7 +24,7 @@ namespace Wallet {
             //Image myImage = new Image { Source = "emailicon.png", Style = (Style)Application.Current.Resources["WalletIcon"] };
             //WalletArea.Children.Add(myImage);
 
-            //Temporary button
+            //Temporary button event set up
             var iconTap = new TapGestureRecognizer();
             iconTap.Tapped += (object sender, EventArgs e) => {
                 GoToAddPage();
