@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -27,6 +28,13 @@ namespace Wallet {
 
         private void ActivateAddModalPage() {
             Overlay.IsVisible = true;
+        }
+
+        private async void PasteButton_Clicked(object sender, EventArgs e) {
+            if (Clipboard.HasText) {
+                string clipboardText = await Clipboard.GetTextAsync();
+                EnterAddressField.Text = clipboardText;
+            }
         }
     }
 }
