@@ -12,6 +12,7 @@ namespace Wallet {
     public partial class ViewAddresses : ContentPage {
         public ViewAddresses() {
             InitializeComponent();
+            Overlay.IsVisible = false;
 
             List<UserAddress> userAddresses = new List<UserAddress>();
             userAddresses.Add(new UserAddress("My 1st ETH address", "0x772682364", "Ethereum"));
@@ -25,7 +26,7 @@ namespace Wallet {
         }
 
         private void ActivateAddModalPage() {
-            
+            Overlay.IsVisible = true;
         }
     }
 }
