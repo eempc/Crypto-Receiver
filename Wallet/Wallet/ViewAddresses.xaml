@@ -35,15 +35,23 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
-            <!-- "Modal" pop up -->
+            <!-- "Modal" pop up (switch to grid) -->
             <ContentView x:Name="Overlay" Opacity="0.9" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Azure" Padding="10" HeightRequest="800">
-                <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Opacity="0.8" BackgroundColor="Blue">
+                <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Opacity="0.8" BackgroundColor="LightBlue">
                     <Label Text="Enter Address" Style="{StaticResource LabelPleasePay}"/>
-                    <Entry x:Name="EnterAddressField"/>
+                    <Entry x:Name="AddressName" Placeholder="Address name (e.g. My Ether address)"/>
+                    <Entry x:Name="EnterAddressField" Placeholder="Enter address or paste it in"/>
+
+                    <Picker x:Name="CryptoPicker" Title="Select cryptocurrency" HorizontalOptions="Fill">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}"/>
+                        </Picker.ItemsSource>
+                    </Picker>
+                    
                     <FlexLayout JustifyContent="SpaceAround">
                         <Button x:Name="PasteButton" Text="Paste" Clicked="PasteButton_Clicked"/>
-                        <Button Text="Cancel"/>
-                        <Button Text="Done"/>
+                        <Button x:Name="CancelButton" Text="Cancel" Clicked="CancelButton_Clicked"/>
+                        <Button x:Name="OkayButton" Text="Okay" Clicked="OkayButton_Clicked"/>
                     </FlexLayout>
                 </StackLayout>
             </ContentView>

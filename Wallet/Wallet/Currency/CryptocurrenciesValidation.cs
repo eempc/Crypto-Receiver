@@ -23,5 +23,13 @@ namespace Wallet {
                 "XMR", "Monero", new Dictionary<string, int>() { {"monero", 0 }, {"piconero", 12} }, "waterdrop.png"
                 ));
         }
+
+        public static List<string> GetCryptoList() {
+            List<string> list = new List<string>();
+            foreach (KeyValuePair<string, Cryptocurrency> entry in cryptocurrencies) {
+                list.Add(entry.Value.fullName); // Same as .Key but probably best to use the object property
+            }
+            return list;
+        }
     }
 }
