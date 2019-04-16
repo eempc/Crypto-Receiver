@@ -117,7 +117,7 @@
                 <Label x:Name="SelectWallet" TextColor="Azure" Text="Select Wallet" Grid.Column="0" HorizontalTextAlignment="end" VerticalTextAlignment="Center"/>
 
                 <FlexLayout x:Name="WalletArea" Grid.Column="1" Wrap="Wrap" CompressedLayout.IsHeadless="False" Position="Relative" HorizontalOptions="Center">
-                    <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}" HorizontalOptions="Fill" Aspect="AspectFit"/>
+                    <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}"/>
                     <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}"/>
                     <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}"/>
                     <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}"/>

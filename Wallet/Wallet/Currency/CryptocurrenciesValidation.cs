@@ -7,6 +7,8 @@ using System.Text;
 namespace Wallet {
     class CryptocurrenciesValidation {
 
+        //This class is unnecessary and should probably be put into cryptocurrency
+
         public static Dictionary<string, Cryptocurrency> cryptocurrencies = new Dictionary<string, Cryptocurrency>();
         
         public static void InitiateCryptos() {
@@ -27,9 +29,11 @@ namespace Wallet {
         public static List<string> GetCryptoList() {
             List<string> list = new List<string>();
             foreach (KeyValuePair<string, Cryptocurrency> entry in cryptocurrencies) {
-                list.Add(entry.Value.fullName); // Same as .Key but probably best to use the object property
+                list.Add(entry.Value.fullName); // Same as entry.Key but probably best to use the object property
             }
             return list;
         }
+
+
     }
 }

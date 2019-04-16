@@ -40,7 +40,7 @@
                 <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Opacity="0.8" BackgroundColor="LightBlue">
                     <Label Text="Enter Address" Style="{StaticResource LabelPleasePay}"/>
                     <Entry x:Name="AddressName" Placeholder="Address name (e.g. My Ether address)"/>
-                    <Entry x:Name="EnterAddressField" Placeholder="Enter address or paste it in"/>
+                    <Entry x:Name="EnterAddressField" Placeholder="Enter/Paste address"/>
 
                     <Picker x:Name="CryptoPicker" Title="Select cryptocurrency" HorizontalOptions="Fill">
                         <Picker.ItemsSource>

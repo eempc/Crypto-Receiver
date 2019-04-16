@@ -12,7 +12,7 @@ using Xamarin.Forms.Xaml;
 namespace Wallet {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ViewAddresses : ContentPage {
-        ObservableCollection<UserAddress> userAddresses; // An observable collection is needed in order for the listview to auto update, not a List
+        static ObservableCollection<UserAddress> userAddresses; // An observable collection is needed in order for the listview to auto update, not a List
         List<string> cryptoList = new List<string>();
 
         public ViewAddresses() {          
@@ -20,6 +20,13 @@ namespace Wallet {
             InitialiseCreatePopUp();
             InitialiseAddressListView();
         }
+
+        public static List<UserAddress> GetAddresses() {
+            List<UserAddress> list = new List<UserAddress>();
+            foreach (UserAddress address in userAddresses) list.Add(address);
+            return list;
+        }
+
 
         private void InitialiseCreatePopUp() {
             Overlay.IsVisible = false;

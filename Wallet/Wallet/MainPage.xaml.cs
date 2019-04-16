@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -26,26 +27,37 @@ namespace Wallet {
 
             //Temporary button event set up
             var iconTap = new TapGestureRecognizer();
-            iconTap.Tapped += (object sender, EventArgs e) => {
-                GoToAddPage();
-            };
+            iconTap.Tapped += (object sender, EventArgs e) => { GoToAddPage(); };
 
             Image ic = TopLeftIcon;
             ic.GestureRecognizers.Add(iconTap);
 
+            PopulateWalletArea();
         }
         
+        private void PopulateWalletArea() {
+            // Currently pinching the observable collection list from viewaddresses rather than the storage file
+            List<UserAddress> walletAddresses = ViewAddresses.GetAddresses();
+
+            for (int i = 0; i < walletAddresses.Count(); i++) {
+                Image image = new Image { Source = "emailicon.png", Style = (Style)Application.Current.Resources["WalletIcon"] };
+            }
+
+        }
+
         private void FiatAmount_TextChanged(object sender, TextChangedEventArgs e) {
             if (double.TryParse(FiatAmount.Text, out double d) && !Double.IsNaN(d) && d > 0 && !Double.IsInfinity(d)) {
                 UpdateCryptoAmount(d);
             }          
         }
 
-        public void UpdateCryptoAmount(double fiatAmount) {
-            CryptoAmount.Text = (fiatAmount * myCrypto.GetRate()).ToString();
-        }
-
+        public void UpdateCryptoAmount(double fiatAmount) => CryptoAmount.Text = (fiatAmount * myCrypto.GetRate()).ToString();
+        
         public async void GoToAddPage() => await Navigation.PushAsync(new ViewAddresses { Title = "Address CRUD Page" });
         
+        public void CurrentlyDisplayedAddress(UserAddress address) {
+
+        }
+
     }
 }
