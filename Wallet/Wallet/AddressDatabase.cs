@@ -15,14 +15,16 @@ namespace Wallet {
         //    var db = new SQLiteConnection(databasePath);
         //}
         
-        public static void CreateDatabase() {           
-            SQLiteConnection db = new SQLiteConnection(databasePath);
-            db.CreateTable<UserAddress>();
-            UserAddress seedingAddress = new UserAddress();
-            seedingAddress.name = "My first Ethereum address";
-            seedingAddress.address = "0xd26114cd6EE289AccF82350c8d8487fedB8A0C07";
-            seedingAddress.crypto = "Ethereum";
-            db.Insert(seedingAddress);           
+        public static void CreateDatabase() {
+            if (!File.Exists(databasePath)) {
+                SQLiteConnection db = new SQLiteConnection(databasePath);
+                db.CreateTable<UserAddress>();
+                UserAddress seedingAddress = new UserAddress();
+                seedingAddress.name = "My first Ethereum address";
+                seedingAddress.address = "0xd26114cd6EE289AccF82350c8d8487fedB8A0C07";
+                seedingAddress.crypto = "Ethereum";
+                db.Insert(seedingAddress);
+            }      
         }
 
         public static List<UserAddress> ReadDatabase() {
@@ -33,6 +35,11 @@ namespace Wallet {
                 list.Add(item);
             }
             return list;
+        }
+
+        public static void InsertIntoDatabase(UserAddress address) {
+            SQLiteAsyncConnection db = new SQLiteAsyncConnection(databasePath);
+            db.InsertAsync(address).Wait();
         }
 
     }

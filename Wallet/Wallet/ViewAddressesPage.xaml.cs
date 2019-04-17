@@ -82,6 +82,7 @@ namespace Wallet {
             userAddresses.Add(newUserAddress);
             AddressesListView.ItemsSource = userAddresses;
             ClearPopUp();
+            AddressDatabase.InsertIntoDatabase(newUserAddress);
         }
     }
 }
