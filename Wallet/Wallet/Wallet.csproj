@@ -19,7 +19,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="sqlite-net-pcl" Version="1.5.231" />
     <PackageReference Include="Xamarin.Forms" Version="3.6.0.264807" />
     <PackageReference Include="Xamarin.Essentials" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="ViewAddressesPage.xaml.cs">
+      <DependentUpon>ViewAddressesPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

@@ -32,7 +32,8 @@ namespace Wallet {
             Image ic = TopLeftIcon;
             ic.GestureRecognizers.Add(iconTap);
 
-            PopulateWalletArea();
+            // Not having the save file is causing major problems, it has to be addressed first
+            //PopulateWalletArea();
         }
         
         private void PopulateWalletArea() {
