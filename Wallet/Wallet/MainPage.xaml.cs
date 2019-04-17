@@ -18,6 +18,7 @@ namespace Wallet {
         public MainPage() {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+            AddressDatabase.CreateDatabase();
             CryptocurrenciesValidation.InitiateCryptos();
             myCrypto = CryptocurrenciesValidation.cryptocurrencies["Ethereum"];
             //GivenName.Text = myCrypto.symbol + myCrypto.fullName;
@@ -38,11 +39,11 @@ namespace Wallet {
         
         private void PopulateWalletArea() {
             // Currently pinching the observable collection list from viewaddresses rather than the storage file
-            List<UserAddress> walletAddresses = ViewAddresses.GetAddresses();
+            //List<UserAddress> walletAddresses = ViewAddresses.GetAddresses();
 
-            for (int i = 0; i < walletAddresses.Count(); i++) {
-                Image image = new Image { Source = "emailicon.png", Style = (Style)Application.Current.Resources["WalletIcon"] };
-            }
+            //for (int i = 0; i < walletAddresses.Count(); i++) {
+            //    Image image = new Image { Source = "emailicon.png", Style = (Style)Application.Current.Resources["WalletIcon"] };
+            //}
 
         }
 
@@ -54,7 +55,7 @@ namespace Wallet {
 
         public void UpdateCryptoAmount(double fiatAmount) => CryptoAmount.Text = (fiatAmount * myCrypto.GetRate()).ToString();
         
-        public async void GoToAddPage() => await Navigation.PushAsync(new ViewAddresses { Title = "Address CRUD Page" });
+        public async void GoToAddPage() => await Navigation.PushAsync(new ViewAddressesPage { Title = "Address CRUD Page" });
         
         public void CurrentlyDisplayedAddress(UserAddress address) {
 

@@ -8,13 +8,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Wallet.ViewAddressesPage.xaml", "ViewAddressesPage.xaml", typeof(global::Wallet.ViewAddresses))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Wallet.ViewAddressesPage.xaml", "ViewAddressesPage.xaml", typeof(global::Wallet.ViewAddressesPage))]
 
 namespace Wallet {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("ViewAddressesPage.xaml")]
-    public partial class ViewAddresses : global::Xamarin.Forms.ContentPage {
+    public partial class ViewAddressesPage : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.Button AddButton;
@@ -45,7 +45,7 @@ namespace Wallet {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
-            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(ViewAddresses));
+            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(ViewAddressesPage));
             AddButton = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "AddButton");
             AddressesListView = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ListView>(this, "AddressesListView");
             Overlay = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ContentView>(this, "Overlay");

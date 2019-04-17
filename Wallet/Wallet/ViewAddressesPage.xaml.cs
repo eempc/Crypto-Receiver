@@ -11,20 +11,24 @@ using Xamarin.Forms.Xaml;
 
 namespace Wallet {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ViewAddresses : ContentPage {
+    public partial class ViewAddressesPage : ContentPage {
         static ObservableCollection<UserAddress> userAddresses; // An observable collection is needed in order for the listview to auto update, not a List
         List<string> cryptoList = new List<string>();
 
-        public ViewAddresses() {          
+        public ViewAddressesPage() {          
             InitializeComponent();            
             InitialiseCreatePopUp();
             InitialiseAddressListView();
         }
 
-        public static List<UserAddress> GetAddresses() {
-            List<UserAddress> list = new List<UserAddress>();
-            foreach (UserAddress address in userAddresses) list.Add(address);
-            return list;
+        //public static List<UserAddress> GetAddresses() {
+        //    List<UserAddress> list = new List<UserAddress>();
+        //    foreach (UserAddress address in userAddresses) list.Add(address);
+        //    return list;
+        //}
+
+        public async void PopUpAlert(string message) {
+            await DisplayAlert("Alert", message, "OK");
         }
 
 
@@ -35,9 +39,10 @@ namespace Wallet {
         }
 
         private void InitialiseAddressListView() {
+            userAddresses = new ObservableCollection<UserAddress>(AddressDatabase.ReadDatabase());
             // Temporary addresses, ideally they would be loaded up first via file
-            userAddresses = new ObservableCollection<UserAddress>();
-            for (int i = 0; i < 8; i++) userAddresses.Add(new UserAddress("Example address " + i, "0x7223434442364", "Ethereum"));
+            //userAddresses = new ObservableCollection<UserAddress>();
+            //for (int i = 0; i < 8; i++) userAddresses.Add(new UserAddress("Example address " + i, "0x7223434442364", "Ethereum"));
             AddressesListView.ItemsSource = userAddresses;
         }
 
@@ -70,7 +75,10 @@ namespace Wallet {
         private void OkayButton_Clicked(object sender, EventArgs e) => AddNewAddress();
 
         private void AddNewAddress() {
-            UserAddress newUserAddress = new UserAddress(AddressName.Text, EnterAddressField.Text, CryptoPicker.SelectedItem.ToString());
+            UserAddress newUserAddress = new UserAddress();
+            newUserAddress.name = AddressName.Text;
+            newUserAddress.address = EnterAddressField.Text;
+            newUserAddress.crypto = CryptoPicker.SelectedItem.ToString();
             userAddresses.Add(newUserAddress);
             AddressesListView.ItemsSource = userAddresses;
             ClearPopUp();
