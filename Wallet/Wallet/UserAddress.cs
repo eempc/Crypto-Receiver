@@ -5,7 +5,7 @@ using SQLite;
 
 namespace Wallet {
     [Table("UserAddress")]
-    public class UserAddress {
+    public class UserAddress : AddressProperties {
         [PrimaryKey, AutoIncrement, Column("_id")]
         public int id { get; set; }
         [MaxLength(64), Unique]
@@ -22,8 +22,8 @@ namespace Wallet {
         //    this.crypto = crypto;          
         //}
 
-        //public UserAddress() {
-
-        //}
+        public UserAddress() {
+            cryptoIconPath = CryptocurrenciesValidation.cryptocurrencies[crypto].imageFile; // Jesus christ
+        }
     }
 }

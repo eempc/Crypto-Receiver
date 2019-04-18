@@ -16,13 +16,13 @@ namespace Wallet {
                 "ETH", 
                 "Ethereum", 
                 new Dictionary<string, int>() { {"ether", 0 }, {"finney", 3}, {"szabo", 6}, {"shannon", 9}, {"lovelace", 12}, {"babbage", 15}, {"wei", 18} },
-                "waterdrop.png"
+                "eth.png"
                 ));
             cryptocurrencies.Add("Bitcoin", new Cryptocurrency(
-                "BTC", "Bitcoin", new Dictionary<string, int>() {{"bitcoin", 0 }, {"satoshi", 8}}, "waterdrop.png"
+                "BTC", "Bitcoin", new Dictionary<string, int>() {{"bitcoin", 0 }, {"satoshi", 8}}, "btc.png"
                 ));
             cryptocurrencies.Add("Monero", new Cryptocurrency(
-                "XMR", "Monero", new Dictionary<string, int>() { {"monero", 0 }, {"piconero", 12} }, "waterdrop.png"
+                "XMR", "Monero", new Dictionary<string, int>() { {"monero", 0 }, {"piconero", 12} }, "xmr.png"
                 ));
         }
 

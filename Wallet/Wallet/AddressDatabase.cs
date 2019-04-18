@@ -10,10 +10,6 @@ namespace Wallet {
     public class AddressDatabase {
         static string personalFolder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
         public static string databasePath = Path.Combine(personalFolder, "addresses.db3");
-
-        //public AddressDatabase() {
-        //    var db = new SQLiteConnection(databasePath);
-        //}
         
         public static void CreateDatabase() {
             if (!File.Exists(databasePath)) {

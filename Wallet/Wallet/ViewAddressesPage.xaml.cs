@@ -40,9 +40,6 @@ namespace Wallet {
 
         private void InitialiseAddressListView() {
             userAddresses = new ObservableCollection<UserAddress>(AddressDatabase.ReadDatabase());
-            // Temporary addresses, ideally they would be loaded up first via file
-            //userAddresses = new ObservableCollection<UserAddress>();
-            //for (int i = 0; i < 8; i++) userAddresses.Add(new UserAddress("Example address " + i, "0x7223434442364", "Ethereum"));
             AddressesListView.ItemsSource = userAddresses;
         }
 
