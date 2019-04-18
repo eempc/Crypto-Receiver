@@ -5,25 +5,23 @@ using SQLite;
 
 namespace Wallet {
     [Table("UserAddress")]
-    public class UserAddress : AddressProperties {
+    public class UserAddress {
         [PrimaryKey, AutoIncrement, Column("_id")]
-        public int id { get; set; }
+        public int id { get; set; } // For identifying in the SQLite database
         [MaxLength(64), Unique]
-        public string name { get; set; }
+        public string name { get; set; } // E.g. "My first Ethereum address"
         [MaxLength(64)]
-        public string address { get; set; }
+        public string address { get; set; } // "E.g. 0x89621f199bbc88a" Technically hexadecimal
         [MaxLength(64)]
-        public string crypto { get; set; } // Select a crypto from the validation class
-        
-        // Constructor not needed with get set. Mght add it back later
-        //public UserAddress(string name, string address, string crypto) {
-        //    this.name = name;
-        //    this.address = address;
-        //    this.crypto = crypto;          
-        //}
+        public string crypto { get; set; } // E.g. a string "Ethereum" 
 
-        public UserAddress() {
-            cryptoIconPath = CryptocurrenciesValidation.cryptocurrencies[crypto].imageFile; // Jesus christ
-        }
+        public string cryptoIconPath { get; set; }
+
+        // Future modifications
+        // I created the extra column to house the icon's path, this is wrong
+        // What I need to do next is remove cryptoIconPath from this class
+        // Then create a new class called ListViewUserAddressItem : UserAddress
+        // In that new class, it inherits all the properties of UserAddress, and cryptoIconPath goes in there, it can also omit _id
+        // The XAML's listview is then bound to ListViewUserAddressItem and not UserAddress
     }
 }

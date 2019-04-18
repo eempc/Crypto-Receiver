@@ -18,8 +18,9 @@ namespace Wallet {
         public MainPage() {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
-            AddressDatabase.CreateDatabase();
             CryptocurrenciesValidation.InitiateCryptos();
+            AddressDatabase.CreateDatabase();
+            
             myCrypto = CryptocurrenciesValidation.cryptocurrencies["Ethereum"];
             //GivenName.Text = myCrypto.symbol + myCrypto.fullName;
             //QRImage.Source = myCrypto.imageFile;

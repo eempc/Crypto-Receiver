@@ -76,6 +76,7 @@ namespace Wallet {
             newUserAddress.name = AddressName.Text;
             newUserAddress.address = EnterAddressField.Text;
             newUserAddress.crypto = CryptoPicker.SelectedItem.ToString();
+            newUserAddress.cryptoIconPath = CryptocurrenciesValidation.cryptocurrencies[CryptoPicker.SelectedItem.ToString()].imageFile;
             userAddresses.Add(newUserAddress);
             AddressesListView.ItemsSource = userAddresses;
             ClearPopUp();

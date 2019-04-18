@@ -22,12 +22,16 @@ android.support.v7.widget.Toolbar;D:\Projects\Wallet\Wallet\Wallet.Android\obj\D
 android.support.v7.widget.Toolbar;obj\Debug\81\res\layout\toolbar.xml
 background;obj\Debug\81\res\mipmap-anydpi-v26\icon.xml
 background;obj\Debug\81\res\mipmap-anydpi-v26\icon_round.xml
+cache-path;D:\Projects\Wallet\Wallet\Wallet.Android\obj\Debug\81\lp\29\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 color;obj\Debug\81\res\values\colors.xml
+external-cache-path;D:\Projects\Wallet\Wallet\Wallet.Android\obj\Debug\81\lp\29\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
+external-path;D:\Projects\Wallet\Wallet\Wallet.Android\obj\Debug\81\lp\29\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 foreground;obj\Debug\81\res\mipmap-anydpi-v26\icon.xml
 foreground;obj\Debug\81\res\mipmap-anydpi-v26\icon_round.xml
 FrameLayout;D:\Projects\Wallet\Wallet\Wallet.Android\obj\Debug\81\lp\31\jl\res\layout\bottomtablayout.xml
 item;obj\Debug\81\res\values\styles.xml
 LinearLayout;D:\Projects\Wallet\Wallet\Wallet.Android\obj\Debug\81\lp\31\jl\res\layout\bottomtablayout.xml
+paths;D:\Projects\Wallet\Wallet\Wallet.Android\obj\Debug\81\lp\29\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 resources;obj\Debug\81\res\values\colors.xml
 resources;obj\Debug\81\res\values\styles.xml
 set;D:\Projects\Wallet\Wallet\Wallet.Android\obj\Debug\81\lp\31\jl\res\anim\enterfromleft.xml
