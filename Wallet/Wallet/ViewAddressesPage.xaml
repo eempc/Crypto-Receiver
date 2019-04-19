@@ -42,7 +42,7 @@
             <!-- "Modal" pop up (switch to grid) -->
             <ContentView x:Name="Overlay" Opacity="0.9" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Azure" Padding="10" HeightRequest="800">
                 <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Opacity="0.8" BackgroundColor="LightBlue">
-                    <Label Text="Enter Address" Style="{StaticResource LabelPleasePay}"/>
+                    <Label x:Name="PopUpLabel" Text="Enter Address" Style="{StaticResource LabelPleasePay}"/>
                     <Entry x:Name="AddressName" Placeholder="Address name (e.g. My Ether address)"/>
                     <Entry x:Name="EnterAddressField" Placeholder="Enter/Paste address"/>
 

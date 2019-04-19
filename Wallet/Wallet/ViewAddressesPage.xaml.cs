@@ -50,15 +50,22 @@ namespace Wallet {
 
         // For create send a string (title) and a blue colour (background), for edit send a string and a red background or a Binding?
         private void AddButton_Clicked(object sender, EventArgs e) {
-            CreatePopUp();
-            isAdd = true;
+            CreatePopUp("Add new address");
+            //isAdd = true;
+            updateIdGlobal = 0;
         }
-        
+
         // This is what happens when you use the asolute layout method for pop up. Technically the new controls are still part of this page.
         // Therefore the controls stay here on this class. If I had used a new Modal page, then it would have created a new class to deal with the pop up.
         // As it is everything below belongs to the pop up pseudo class
         // I could create a class for this later directly below this current class
-        private void CreatePopUp() => Overlay.IsVisible = true; // This needs a parameter to be passed in, whether it is an Add or Edit
+        private void CreatePopUp(string heading, string name = "", string address = "", int pickerIndex = 0) {
+            Overlay.IsVisible = true;
+            PopUpLabel.Text = heading;
+            CryptoPicker.SelectedIndex = pickerIndex;
+            AddressName.Text = name;
+            EnterAddressField.Text = address;
+        }
 
         private void PasteButton_Clicked(object sender, EventArgs e) => PasteAddress();
 
@@ -78,30 +85,41 @@ namespace Wallet {
         }
 
         private void OkayButton_Clicked(object sender, EventArgs e) {
-            if (isAdd) AddNewAddress();
-            else UpdateAddress();
+            SaveAddress();
+        }
+
+        private void SaveAddress() {
+            UserAddress address = new UserAddress();
+            address.name = AddressName.Text;
+            address.address = EnterAddressField.Text;
+            address.crypto = CryptoPicker.SelectedItem.ToString();
+            address.cryptoIconPath = CryptocurrenciesValidation.cryptocurrencies[CryptoPicker.SelectedItem.ToString()].imageFile; // This is a bad line
+            address.id = updateIdGlobal;
+            ClearPopUp();
+            AddressDatabase.SaveToDatabase(address);
+            RefreshListView();
         }
 
         private void AddNewAddress() {
-            UserAddress newUserAddress = new UserAddress();
-            newUserAddress.name = AddressName.Text;
-            newUserAddress.address = EnterAddressField.Text;
-            newUserAddress.crypto = CryptoPicker.SelectedItem.ToString();
-            newUserAddress.cryptoIconPath = CryptocurrenciesValidation.cryptocurrencies[CryptoPicker.SelectedItem.ToString()].imageFile; // This is a bad line
-            userAddresses.Add(newUserAddress);
+            UserAddress address = new UserAddress();
+            address.name = AddressName.Text;
+            address.address = EnterAddressField.Text;
+            address.crypto = CryptoPicker.SelectedItem.ToString();
+            address.cryptoIconPath = CryptocurrenciesValidation.cryptocurrencies[CryptoPicker.SelectedItem.ToString()].imageFile; // This is a bad line
+            userAddresses.Add(address);
             //RefreshListView();
             ClearPopUp();
-            AddressDatabase.InsertIntoDatabase(newUserAddress);
+            AddressDatabase.InsertIntoDatabase(address);
         }
 
-        int UpdateID; // updated by tappedItem.id
+        int updateIdGlobal; // updated by tappedItem.id global variable
         private void UpdateAddress() {
             UserAddress address = new UserAddress();
             address.name = AddressName.Text;
             address.address = EnterAddressField.Text;
             address.crypto = CryptoPicker.SelectedItem.ToString();
             address.cryptoIconPath = CryptocurrenciesValidation.cryptocurrencies[CryptoPicker.SelectedItem.ToString()].imageFile; // This is a bad line
-            address.id = UpdateID;
+            address.id = updateIdGlobal;
             AddressDatabase.UpdateRow(address);
             RefreshListView();
             ClearPopUp();
@@ -121,20 +139,19 @@ namespace Wallet {
 
         private async void AddressesListView_ItemTapped(object sender, ItemTappedEventArgs e) {
             UserAddress tappedItem = (UserAddress)((ListView)sender).SelectedItem;
-            //DisplayAlert("tapped", tappedItem.name + " " + tappedItem.id, "OK");
-            // Display Action Sheet https://docs.microsoft.com/en-us/xamarin/xamarin-forms/app-fundamentals/navigation/pop-ups
+
             string action = await DisplayActionSheet("Action on " + tappedItem.name, "Cancel", null, "Delete", "Edit", "Copy address");
+
             if (action == "Delete") {
                 AddressDatabase.DeleteFromDatabase(tappedItem.id);
                 userAddresses.Remove(userAddresses.Where(x => x.id == tappedItem.id).Single()); // x refers to each item in the collection
-                //RefreshListView();
             } else if (action == "Copy address") {
                 await Clipboard.SetTextAsync(tappedItem.address);
             } else if (action == "Edit") {
-                isAdd = false;
-                Overlay.IsVisible = true;
-                UpdateID = tappedItem.id;
-                // Need to pass a full argument and/or object in here
+                int index = CryptoPicker.ItemsSource.IndexOf(tappedItem.crypto);
+                CreatePopUp("Edit address", tappedItem.name, tappedItem.address, index);
+                //isAdd = false;
+                updateIdGlobal = tappedItem.id;
             }
         }
 

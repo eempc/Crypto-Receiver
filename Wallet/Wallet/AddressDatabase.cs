@@ -51,5 +51,14 @@ namespace Wallet {
             }
         }
 
+        public static void SaveToDatabase(UserAddress address) {
+            SQLiteConnection db = new SQLiteConnection(databasePath);
+            if (address.id == 0) {
+                db.Insert(address);
+            } else {
+                db.Update(address);
+            }
+        }
+
     }
 }
