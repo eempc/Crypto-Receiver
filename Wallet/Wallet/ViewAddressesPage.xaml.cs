@@ -15,6 +15,8 @@ namespace Wallet {
     public partial class ViewAddressesPage : ContentPage {
         static ObservableCollection<UserAddress> userAddresses; // An observable collection is needed in order for the listview to auto update, not a List
         List<string> cryptoList = new List<string>();
+        // enum AddEdit {Add, Edit };
+        bool isAdd;
 
         public ViewAddressesPage() {          
             InitializeComponent();            
@@ -44,14 +46,19 @@ namespace Wallet {
             AddressesListView.ItemsSource = userAddresses;
         }
 
+        // Global variable to determine the state, add or edit, use enum?
+
         // For create send a string (title) and a blue colour (background), for edit send a string and a red background or a Binding?
-        private void Button_Clicked(object sender, EventArgs e) => CreatePopUp(); 
+        private void AddButton_Clicked(object sender, EventArgs e) {
+            CreatePopUp();
+            isAdd = true;
+        }
         
         // This is what happens when you use the asolute layout method for pop up. Technically the new controls are still part of this page.
         // Therefore the controls stay here on this class. If I had used a new Modal page, then it would have created a new class to deal with the pop up.
         // As it is everything below belongs to the pop up pseudo class
         // I could create a class for this later directly below this current class
-        private void CreatePopUp() => Overlay.IsVisible = true;
+        private void CreatePopUp() => Overlay.IsVisible = true; // This needs a parameter to be passed in, whether it is an Add or Edit
 
         private void PasteButton_Clicked(object sender, EventArgs e) => PasteAddress();
 
@@ -70,18 +77,35 @@ namespace Wallet {
             AddressName.Text = "";
         }
 
-        private void OkayButton_Clicked(object sender, EventArgs e) => AddNewAddress();
+        private void OkayButton_Clicked(object sender, EventArgs e) {
+            if (isAdd) AddNewAddress();
+            else UpdateAddress();
+        }
 
         private void AddNewAddress() {
             UserAddress newUserAddress = new UserAddress();
             newUserAddress.name = AddressName.Text;
             newUserAddress.address = EnterAddressField.Text;
             newUserAddress.crypto = CryptoPicker.SelectedItem.ToString();
-            newUserAddress.cryptoIconPath = CryptocurrenciesValidation.cryptocurrencies[CryptoPicker.SelectedItem.ToString()].imageFile;
+            newUserAddress.cryptoIconPath = CryptocurrenciesValidation.cryptocurrencies[CryptoPicker.SelectedItem.ToString()].imageFile; // This is a bad line
             userAddresses.Add(newUserAddress);
             //RefreshListView();
             ClearPopUp();
             AddressDatabase.InsertIntoDatabase(newUserAddress);
+        }
+
+        int UpdateID; // updated by tappedItem.id
+        private void UpdateAddress() {
+            UserAddress address = new UserAddress();
+            address.name = AddressName.Text;
+            address.address = EnterAddressField.Text;
+            address.crypto = CryptoPicker.SelectedItem.ToString();
+            address.cryptoIconPath = CryptocurrenciesValidation.cryptocurrencies[CryptoPicker.SelectedItem.ToString()].imageFile; // This is a bad line
+            address.id = UpdateID;
+            AddressDatabase.UpdateRow(address);
+            RefreshListView();
+            ClearPopUp();
+            
         }
 
         private void MenuItem_Clicked(object sender, EventArgs e) {
@@ -102,12 +126,23 @@ namespace Wallet {
             string action = await DisplayActionSheet("Action on " + tappedItem.name, "Cancel", null, "Delete", "Edit", "Copy address");
             if (action == "Delete") {
                 AddressDatabase.DeleteFromDatabase(tappedItem.id);
-                userAddresses.Remove(userAddresses.Where(x => x.id == tappedItem.id).Single());
+                userAddresses.Remove(userAddresses.Where(x => x.id == tappedItem.id).Single()); // x refers to each item in the collection
                 //RefreshListView();
+            } else if (action == "Copy address") {
+                await Clipboard.SetTextAsync(tappedItem.address);
+            } else if (action == "Edit") {
+                isAdd = false;
+                Overlay.IsVisible = true;
+                UpdateID = tappedItem.id;
+                // Need to pass a full argument and/or object in here
             }
         }
 
-        private void RefreshListView() => AddressesListView.ItemsSource = userAddresses;
+        private void RefreshListView() {
+            userAddresses.Clear();
+            userAddresses = new ObservableCollection<UserAddress>(AddressDatabase.ReadDatabase());
+            AddressesListView.ItemsSource = userAddresses; // Unnecessary with an Observable Collection
+        }
 
 
         private void AddressesListView_ItemSelected(object sender, SelectedItemChangedEventArgs e) {

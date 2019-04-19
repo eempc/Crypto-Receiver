@@ -44,5 +44,12 @@ namespace Wallet {
             db.Delete<UserAddress>(id);
         }
 
+        public static void UpdateRow(UserAddress address) {
+            SQLiteConnection db = new SQLiteConnection(databasePath);
+            if (address.id != 0) {
+                db.Update(address);
+            }
+        }
+
     }
 }
