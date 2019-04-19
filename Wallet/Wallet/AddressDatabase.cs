@@ -34,26 +34,14 @@ namespace Wallet {
             return list;
         }
 
-        public static void InsertIntoDatabase(UserAddress address) {
-            SQLiteAsyncConnection db = new SQLiteAsyncConnection(databasePath);
-            db.InsertAsync(address).Wait();
-        }
-
         public static void DeleteFromDatabase(int id) {
             SQLiteConnection db = new SQLiteConnection(databasePath);
             db.Delete<UserAddress>(id);
         }
 
-        public static void UpdateRow(UserAddress address) {
-            SQLiteConnection db = new SQLiteConnection(databasePath);
-            if (address.id != 0) {
-                db.Update(address);
-            }
-        }
-
         public static void SaveToDatabase(UserAddress address) {
             SQLiteConnection db = new SQLiteConnection(databasePath);
-            if (address.id == 0) {
+            if (address.id <= 0) {
                 db.Insert(address);
             } else {
                 db.Update(address);

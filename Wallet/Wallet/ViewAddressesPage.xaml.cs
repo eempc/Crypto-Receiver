@@ -24,17 +24,6 @@ namespace Wallet {
             InitialiseAddressListView();
         }
 
-        //public static List<UserAddress> GetAddresses() {
-        //    List<UserAddress> list = new List<UserAddress>();
-        //    foreach (UserAddress address in userAddresses) list.Add(address);
-        //    return list;
-        //}
-
-        public async void PopUpAlert(string message) {
-            await DisplayAlert("Alert", message, "OK");
-        }
-
-
         private void InitialiseCreatePopUp() {
             Overlay.IsVisible = false;
             cryptoList = CryptocurrenciesValidation.GetCryptoList();
@@ -46,20 +35,13 @@ namespace Wallet {
             AddressesListView.ItemsSource = userAddresses;
         }
 
-        // Global variable to determine the state, add or edit, use enum?
-
-        // For create send a string (title) and a blue colour (background), for edit send a string and a red background or a Binding?
         private void AddButton_Clicked(object sender, EventArgs e) {
-            CreatePopUp("Add new address");
-            //isAdd = true;
+            CreatePopUp("Create address");
             updateIdGlobal = 0;
         }
 
-        // This is what happens when you use the asolute layout method for pop up. Technically the new controls are still part of this page.
-        // Therefore the controls stay here on this class. If I had used a new Modal page, then it would have created a new class to deal with the pop up.
-        // As it is everything below belongs to the pop up pseudo class
-        // I could create a class for this later directly below this current class
-        private void CreatePopUp(string heading, string name = "", string address = "", int pickerIndex = 0) {
+        // Make pop up entry form visible. Populate if it is an edit
+        private void CreatePopUp(string heading, string name = "", string address = "", int pickerIndex = -1) {
             Overlay.IsVisible = true;
             PopUpLabel.Text = heading;
             CryptoPicker.SelectedIndex = pickerIndex;
@@ -84,10 +66,9 @@ namespace Wallet {
             AddressName.Text = "";
         }
 
-        private void OkayButton_Clicked(object sender, EventArgs e) {
-            SaveAddress();
-        }
+        private void OkayButton_Clicked(object sender, EventArgs e) => SaveAddress();
 
+        int updateIdGlobal; // updated by tappedItem.id global variable
         private void SaveAddress() {
             UserAddress address = new UserAddress();
             address.name = AddressName.Text;
@@ -100,46 +81,8 @@ namespace Wallet {
             RefreshListView();
         }
 
-        private void AddNewAddress() {
-            UserAddress address = new UserAddress();
-            address.name = AddressName.Text;
-            address.address = EnterAddressField.Text;
-            address.crypto = CryptoPicker.SelectedItem.ToString();
-            address.cryptoIconPath = CryptocurrenciesValidation.cryptocurrencies[CryptoPicker.SelectedItem.ToString()].imageFile; // This is a bad line
-            userAddresses.Add(address);
-            //RefreshListView();
-            ClearPopUp();
-            AddressDatabase.InsertIntoDatabase(address);
-        }
-
-        int updateIdGlobal; // updated by tappedItem.id global variable
-        private void UpdateAddress() {
-            UserAddress address = new UserAddress();
-            address.name = AddressName.Text;
-            address.address = EnterAddressField.Text;
-            address.crypto = CryptoPicker.SelectedItem.ToString();
-            address.cryptoIconPath = CryptocurrenciesValidation.cryptocurrencies[CryptoPicker.SelectedItem.ToString()].imageFile; // This is a bad line
-            address.id = updateIdGlobal;
-            AddressDatabase.UpdateRow(address);
-            RefreshListView();
-            ClearPopUp();
-            
-        }
-
-        private void MenuItem_Clicked(object sender, EventArgs e) {
-            var mi = ((MenuItem)sender);
-            DisplayAlert("Action 1", mi.CommandParameter.ToString() + " 1", "OK");
-            
-        }
-
-        private void MenuItem_Clicked_1(object sender, EventArgs e) {
-            var mi = ((MenuItem)sender);
-            DisplayAlert("Action 2", mi.CommandParameter.ToString() + " 2", "OK");
-        }
-
         private async void AddressesListView_ItemTapped(object sender, ItemTappedEventArgs e) {
             UserAddress tappedItem = (UserAddress)((ListView)sender).SelectedItem;
-
             string action = await DisplayActionSheet("Action on " + tappedItem.name, "Cancel", null, "Delete", "Edit", "Copy address");
 
             if (action == "Delete") {
@@ -150,7 +93,6 @@ namespace Wallet {
             } else if (action == "Edit") {
                 int index = CryptoPicker.ItemsSource.IndexOf(tappedItem.crypto);
                 CreatePopUp("Edit address", tappedItem.name, tappedItem.address, index);
-                //isAdd = false;
                 updateIdGlobal = tappedItem.id;
             }
         }
@@ -159,6 +101,18 @@ namespace Wallet {
             userAddresses.Clear();
             userAddresses = new ObservableCollection<UserAddress>(AddressDatabase.ReadDatabase());
             AddressesListView.ItemsSource = userAddresses; // Unnecessary with an Observable Collection
+        }
+
+
+        private void MenuItem_Clicked(object sender, EventArgs e) {
+            var mi = ((MenuItem)sender);
+            DisplayAlert("Action 1", mi.CommandParameter.ToString() + " 1", "OK");
+
+        }
+
+        private void MenuItem_Clicked_1(object sender, EventArgs e) {
+            var mi = ((MenuItem)sender);
+            DisplayAlert("Action 2", mi.CommandParameter.ToString() + " 2", "OK");
         }
 
 
