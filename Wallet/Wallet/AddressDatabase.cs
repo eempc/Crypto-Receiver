@@ -39,5 +39,10 @@ namespace Wallet {
             db.InsertAsync(address).Wait();
         }
 
+        public static void DeleteFromDatabase(int id) {
+            SQLiteConnection db = new SQLiteConnection(databasePath);
+            db.Delete<UserAddress>(id);
+        }
+
     }
 }

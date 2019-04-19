@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -78,7 +79,7 @@ namespace Wallet {
             newUserAddress.crypto = CryptoPicker.SelectedItem.ToString();
             newUserAddress.cryptoIconPath = CryptocurrenciesValidation.cryptocurrencies[CryptoPicker.SelectedItem.ToString()].imageFile;
             userAddresses.Add(newUserAddress);
-            AddressesListView.ItemsSource = userAddresses;
+            //RefreshListView();
             ClearPopUp();
             AddressDatabase.InsertIntoDatabase(newUserAddress);
         }
@@ -94,10 +95,20 @@ namespace Wallet {
             DisplayAlert("Action 2", mi.CommandParameter.ToString() + " 2", "OK");
         }
 
-        private void AddressesListView_ItemTapped(object sender, ItemTappedEventArgs e) {
+        private async void AddressesListView_ItemTapped(object sender, ItemTappedEventArgs e) {
             UserAddress tappedItem = (UserAddress)((ListView)sender).SelectedItem;
-            DisplayAlert("tapped", tappedItem.name + " " + tappedItem.id, "OK");
+            //DisplayAlert("tapped", tappedItem.name + " " + tappedItem.id, "OK");
+            // Display Action Sheet https://docs.microsoft.com/en-us/xamarin/xamarin-forms/app-fundamentals/navigation/pop-ups
+            string action = await DisplayActionSheet("Action on " + tappedItem.name, "Cancel", null, "Delete", "Edit", "Copy address");
+            if (action == "Delete") {
+                AddressDatabase.DeleteFromDatabase(tappedItem.id);
+                userAddresses.Remove(userAddresses.Where(x => x.id == tappedItem.id).Single());
+                //RefreshListView();
+            }
         }
+
+        private void RefreshListView() => AddressesListView.ItemsSource = userAddresses;
+
 
         private void AddressesListView_ItemSelected(object sender, SelectedItemChangedEventArgs e) {
 
