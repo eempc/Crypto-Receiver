@@ -3,9 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Wallet.App">
     <Application.Resources>
+        <!-- ||| Static Resources ||| -->
+        <!-- <ResourceDictionary> could wrap here? -->
         <!-- Colours -->
         <Color x:Key="DarkText">#666666</Color>
-        
         
         <!-- Font sizes -->
         <x:Double x:Key="FontSizeHeader">32</x:Double>

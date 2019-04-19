@@ -21,7 +21,7 @@ namespace Wallet {
                 seedingAddress.crypto = "Ethereum";
                 seedingAddress.cryptoIconPath = CryptocurrenciesValidation.cryptocurrencies["Ethereum"].imageFile;
                 db.Insert(seedingAddress);
-            }      
+            }
         }
 
         public static List<UserAddress> ReadDatabase() {

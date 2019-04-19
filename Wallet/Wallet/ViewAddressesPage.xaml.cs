@@ -82,5 +82,25 @@ namespace Wallet {
             ClearPopUp();
             AddressDatabase.InsertIntoDatabase(newUserAddress);
         }
+
+        private void MenuItem_Clicked(object sender, EventArgs e) {
+            var mi = ((MenuItem)sender);
+            DisplayAlert("Action 1", mi.CommandParameter.ToString() + " 1", "OK");
+            
+        }
+
+        private void MenuItem_Clicked_1(object sender, EventArgs e) {
+            var mi = ((MenuItem)sender);
+            DisplayAlert("Action 2", mi.CommandParameter.ToString() + " 2", "OK");
+        }
+
+        private void AddressesListView_ItemTapped(object sender, ItemTappedEventArgs e) {
+            UserAddress tappedItem = (UserAddress)((ListView)sender).SelectedItem;
+            DisplayAlert("tapped", tappedItem.name + " " + tappedItem.id, "OK");
+        }
+
+        private void AddressesListView_ItemSelected(object sender, SelectedItemChangedEventArgs e) {
+
+        }
     }
 }
