@@ -118,14 +118,11 @@
 
             <ScrollView Grid.Column="1" Orientation="Horizontal">
                 <FlexLayout x:Name="WalletArea"  Wrap="NoWrap" CompressedLayout.IsHeadless="False" Position="Relative" HorizontalOptions="Center" AlignItems="Center">
-                    <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}"/>
-                    <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}"/>
-                    <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}"/>
-                    <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}"/>
-                    <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}"/>
-                    <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}"/>
-                    <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}"/>
-                    <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}"/>
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding cryptoIconPath}" Style="{StaticResource WalletIcon}"/>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
                 </FlexLayout>
             </ScrollView>
 

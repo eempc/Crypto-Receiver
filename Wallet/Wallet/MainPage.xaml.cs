@@ -15,12 +15,13 @@ namespace Wallet {
     public partial class MainPage : ContentPage {
         int currentAddressIndex;
         Cryptocurrency myCrypto = new Cryptocurrency();
-
+        //List<UserAddress> addresses;
         public MainPage() {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             CryptocurrenciesValidation.InitiateCryptos();
             AddressDatabase.CreateDatabase();
+            AddressDatabase.SetCurrentAddresses();
             
             myCrypto = CryptocurrenciesValidation.cryptocurrencies["Ethereum"];
             //GivenName.Text = myCrypto.symbol + myCrypto.fullName;
@@ -36,11 +37,12 @@ namespace Wallet {
             ic.GestureRecognizers.Add(iconTap);
 
             // Not having the save file is causing major problems, it has to be addressed first
-            //PopulateWalletArea();
+            PopulateWalletArea();
         }
         
         private void PopulateWalletArea() {
-
+            //addresses = AddressDatabase.ReadDatabase();
+            BindableLayout.SetItemsSource(WalletArea, AddressDatabase.currentAddresses);
 
         }
 

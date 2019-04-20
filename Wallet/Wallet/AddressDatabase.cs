@@ -10,7 +10,8 @@ namespace Wallet {
     public class AddressDatabase {
         static string personalFolder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
         public static string databasePath = Path.Combine(personalFolder, "addresses001.db3");
-        
+        public static List<UserAddress> currentAddresses;
+
         public static void CreateDatabase() {
             if (!File.Exists(databasePath)) {
                 SQLiteConnection db = new SQLiteConnection(databasePath);
@@ -23,6 +24,11 @@ namespace Wallet {
                 db.Insert(seedingAddress);
             }
         }
+
+        public static void SetCurrentAddresses() {
+            currentAddresses = ReadDatabase();
+        }
+
 
         public static List<UserAddress> ReadDatabase() {
             List<UserAddress> list = new List<UserAddress>();
