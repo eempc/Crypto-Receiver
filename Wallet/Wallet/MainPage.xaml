@@ -116,13 +116,19 @@
 
                 <Label x:Name="SelectWallet" TextColor="Azure" Text="Select Wallet" Grid.Column="0" HorizontalTextAlignment="end" VerticalTextAlignment="Center"/>
 
-                <FlexLayout x:Name="WalletArea" Grid.Column="1" Wrap="Wrap" CompressedLayout.IsHeadless="False" Position="Relative" HorizontalOptions="Center">
+            <ScrollView Grid.Column="1" Orientation="Horizontal">
+                <FlexLayout x:Name="WalletArea"  Wrap="NoWrap" CompressedLayout.IsHeadless="False" Position="Relative" HorizontalOptions="Center" AlignItems="Center">
                     <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}"/>
                     <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}"/>
                     <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}"/>
                     <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}"/>
-
+                    <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}"/>
+                    <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}"/>
+                    <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}"/>
+                    <Image ClassId="WalletIcon" Source="waterdrop.png" Style="{StaticResource WalletIcon}"/>
                 </FlexLayout>
+            </ScrollView>
+
 
 
             </Grid>

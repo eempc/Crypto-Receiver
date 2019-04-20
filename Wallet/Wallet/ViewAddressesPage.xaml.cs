@@ -15,8 +15,6 @@ namespace Wallet {
     public partial class ViewAddressesPage : ContentPage {
         static ObservableCollection<UserAddress> userAddresses; // An observable collection is needed in order for the listview to auto update, not a List
         List<string> cryptoList = new List<string>();
-        // enum AddEdit {Add, Edit };
-        bool isAdd;
 
         public ViewAddressesPage() {          
             InitializeComponent();            
@@ -103,7 +101,6 @@ namespace Wallet {
             AddressesListView.ItemsSource = userAddresses; // Unnecessary with an Observable Collection
         }
 
-
         private void MenuItem_Clicked(object sender, EventArgs e) {
             var mi = ((MenuItem)sender);
             DisplayAlert("Action 1", mi.CommandParameter.ToString() + " 1", "OK");
@@ -114,7 +111,6 @@ namespace Wallet {
             var mi = ((MenuItem)sender);
             DisplayAlert("Action 2", mi.CommandParameter.ToString() + " 2", "OK");
         }
-
 
         private void AddressesListView_ItemSelected(object sender, SelectedItemChangedEventArgs e) {
 

@@ -13,6 +13,7 @@ namespace Wallet {
     // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(true)]
     public partial class MainPage : ContentPage {
+        int currentAddressIndex;
         Cryptocurrency myCrypto = new Cryptocurrency();
 
         public MainPage() {
@@ -39,12 +40,7 @@ namespace Wallet {
         }
         
         private void PopulateWalletArea() {
-            // Currently pinching the observable collection list from viewaddresses rather than the storage file
-            //List<UserAddress> walletAddresses = ViewAddresses.GetAddresses();
 
-            //for (int i = 0; i < walletAddresses.Count(); i++) {
-            //    Image image = new Image { Source = "emailicon.png", Style = (Style)Application.Current.Resources["WalletIcon"] };
-            //}
 
         }
 
