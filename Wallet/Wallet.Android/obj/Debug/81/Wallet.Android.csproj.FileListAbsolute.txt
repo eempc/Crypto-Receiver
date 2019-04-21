@@ -259,3 +259,4 @@ D:\Projects\Wallet\Wallet\Wallet.Android\obj\Debug\81\stamp\_ResolveLibraryProje
 D:\Projects\Wallet\Wallet\Wallet.Android\obj\Debug\81\android\assets\machine.config
 D:\Projects\Wallet\Wallet\Wallet.Android\obj\Debug\81\stamp\_CompileToDalvik.stamp
 D:\Projects\Wallet\Wallet\Wallet.Android\obj\Debug\81\stamp\_GeneratePackageManagerJava.stamp
+D:\Projects\Wallet\Wallet\Wallet.Android\obj\Debug\81\res\drawable\list.png

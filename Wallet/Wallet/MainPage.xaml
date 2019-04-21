@@ -28,7 +28,7 @@
 
             <Image x:Name="TopLeftIcon" Source="waterdrop.png" Grid.Column="0"></Image>
             <Label x:Name="Header" Grid.Column="1" Text="Ethereum" Style="{StaticResource LabelHeader}"/>
-            <Image x:Name="Burger" Grid.Column="2" Source="waterdrop.png"/>
+            <Image x:Name="BurgerIcon" Grid.Column="2" Source="list.png" Scale="0.8" Margin="0,0,10,0"/>
         </Grid>
         
         <!-- Row 1 Address name -->
@@ -43,7 +43,7 @@
 
         <!-- Row 3 Address -->
  
-        <Label x:Name="Address" Grid.Row="3" Style="{StaticResource LabelAddress}">0xd26114cd6EE289AccF82350c8d8487fedB8A0C07</Label>
+        <Label x:Name="CryptoAddress" Grid.Row="3" Style="{StaticResource LabelAddress}">0xd26114cd6EE289AccF82350c8d8487fedB8A0C07</Label>
         
         <!-- Row 4 Enter Amount -->
 
@@ -120,7 +120,7 @@
                 <FlexLayout x:Name="WalletArea"  Wrap="NoWrap" CompressedLayout.IsHeadless="False" Position="Relative" HorizontalOptions="Center" AlignItems="Center">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding cryptoIconPath}" Style="{StaticResource WalletIcon}"/>
+                            <ImageButton ClassId="{Binding id}" Clicked="ImageButtonFlex_Clicked" Source="{Binding cryptoIconPath}" Style="{StaticResource WalletIcon}"/>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
                 </FlexLayout>

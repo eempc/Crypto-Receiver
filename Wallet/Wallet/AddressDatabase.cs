@@ -10,7 +10,7 @@ namespace Wallet {
     public class AddressDatabase {
         static string personalFolder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
         public static string databasePath = Path.Combine(personalFolder, "addresses001.db3");
-        public static List<UserAddress> currentAddresses;
+        //public static ObservableCollection<UserAddress> currentAddresses;
 
         public static void CreateDatabase() {
             if (!File.Exists(databasePath)) {
@@ -25,9 +25,9 @@ namespace Wallet {
             }
         }
 
-        public static void SetCurrentAddresses() {
-            currentAddresses = ReadDatabase();
-        }
+        //public static void SetCurrentAddresses() {
+        //    currentAddresses = new ObservableCollection<UserAddress>(ReadDatabase());
+        //}
 
 
         public static List<UserAddress> ReadDatabase() {
@@ -54,5 +54,9 @@ namespace Wallet {
             }
         }
 
+        public static UserAddress GetItemById(int number) {
+            SQLiteConnection db = new SQLiteConnection(databasePath);
+            return db.Table<UserAddress>().Where(x => x.id == number).FirstOrDefault();
+        }
     }
 }

@@ -77,6 +77,7 @@ namespace Wallet {
             ClearPopUp();
             AddressDatabase.SaveToDatabase(address);
             RefreshListView();
+            
         }
 
         private async void AddressesListView_ItemTapped(object sender, ItemTappedEventArgs e) {
