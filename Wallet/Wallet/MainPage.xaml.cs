@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
+
 namespace Wallet {
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
@@ -75,6 +76,13 @@ namespace Wallet {
             CryptoAddress.Text = address.address; //.yeah well done here rofl
             // Etherscan image source
             // Feed box changes
+            SetQRCode(address.address);
+
+        }
+
+        public void SetQRCode(string str) {
+
+            
         }
 
         // Wallet area button handlers

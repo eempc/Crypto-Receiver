@@ -1,3 +1,4 @@
+FastAndroidCamera
 FormsViewGroup
 SQLite-net
 SQLitePCLRaw.batteries_green
@@ -32,5 +33,7 @@ Xamarin.Forms.Core
 Xamarin.Forms.Platform.Android
 Xamarin.Forms.Platform
 Xamarin.Forms.Xaml
+ZXing.Net.Mobile.Forms.Android
+ZXing.Net.Mobile.Forms
 netstandard
 System.Reflection.Extensions

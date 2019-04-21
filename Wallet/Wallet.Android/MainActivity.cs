@@ -8,6 +8,7 @@ using Android.Widget;
 using Android.OS;
 using System.Reflection.Emit;
 
+
 namespace Wallet.Droid
 {
     [Activity(Label = "Wallet", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -33,5 +34,6 @@ namespace Wallet.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
     }
 }
